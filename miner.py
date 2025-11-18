@@ -192,7 +192,6 @@ def calculate_final_scores(score_dict: dict,
     smiles = sampler_data["smiles"]
     inchikey_list = sampler_data.get("inchikeys")
 
-    # Calculate InChIKey for each molecule only if not provided by caller
     if inchikey_list is None:
         inchikey_list = []
         for s in smiles:
