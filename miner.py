@@ -148,7 +148,7 @@ def iterative_sampling_loop(
             'ps_antitarget_scores': all_antitarget_results,
         }
 
-        # Calculate final scores per molecule
+        # Calculate scores
         batch_scores = calculate_final_scores(score_dict, sampler_data, config, save_all_scores)
 
         try:
