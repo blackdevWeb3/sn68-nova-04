@@ -1,4 +1,3 @@
-#new miner code
 import os
 os.environ['CUBLAS_WORKSPACE_CONFIG'] = ':4096:8'
 
@@ -354,9 +353,6 @@ def calculate_final_scores(score_dict: dict,
         config: dict, 
         save_all_scores: bool = False,
         current_epoch: int = 0) -> pd.DataFrame:
-    """
-    Calculate final scores per molecule
-    """
 
     names = sampler_data["molecules"]
     smiles = sampler_data["smiles"]
@@ -401,16 +397,6 @@ def calculate_final_scores(score_dict: dict,
         "score": final_scores
     })
 
-    # if save_all_scores:
-    #     all_scores = {"scored_molecules": [(mol["name"], mol["score"]) for mol in batch_scores.to_dict(orient="records")]}
-    #     all_scores_path = os.path.join(OUTPUT_DIR, f"all_scores_{current_epoch}.json")
-    #     if os.path.exists(all_scores_path):
-    #         with open(all_scores_path, "r") as f:
-    #             all_previous_scores = json.load(f)
-    #         all_scores["scored_molecules"] = all_previous_scores["scored_molecules"] + all_scores["scored_molecules"]
-    #     with open(all_scores_path, "w") as f:
-    #         json.dump(all_scores, f, ensure_ascii=False, indent=2)
-
     return batch_scores
 
 def main(config: dict):
@@ -421,7 +407,6 @@ def main(config: dict):
         save_all_scores=True,
     )
  
-
 if __name__ == "__main__":
     config = get_config()
     main(config)
